@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
+import { MotionButton } from "@/components/MotionButton";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
@@ -36,30 +37,39 @@ export function PhotoGrid({ brand }: { brand: BrandPage }) {
 
       <section className="px-6 sm:px-10 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="relative rounded-2xl overflow-hidden h-72 sm:col-span-2 sm:row-span-2 sm:h-[36rem]">
-            <HeroImage src={brand.heroImage} alt={brand.heroImageAlt} className="object-cover" priority />
+          <div className="relative rounded-2xl overflow-hidden h-72 sm:col-span-2 sm:row-span-2 sm:h-[36rem] group">
+            <HeroImage
+              src={brand.heroImage}
+              alt={brand.heroImageAlt}
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              priority
+            />
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden h-56 sm:h-[17rem]">
-            <HeroImage src={secondaryImage} alt={secondaryImageAlt} className="object-cover" />
+          <div className="relative rounded-2xl overflow-hidden h-56 sm:h-[17rem] group">
+            <HeroImage
+              src={secondaryImage}
+              alt={secondaryImageAlt}
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <span className="absolute bottom-5 left-5 text-white font-semibold">Explore stays</span>
           </div>
 
           <div
-            className="rounded-2xl h-40 sm:h-[17rem] flex flex-col justify-between p-5 border"
+            className="rounded-2xl h-40 sm:h-[17rem] flex flex-col justify-between p-5 border transition-transform duration-300 hover:-translate-y-1"
             style={{
               borderColor: brand.palette.fg + "22",
               background: `linear-gradient(160deg, ${brand.palette.accent}18, transparent 70%)`,
             }}
           >
             <p className="text-sm opacity-70 max-w-[16rem]">Real places, hosted by real people.</p>
-            <button
+            <MotionButton
               className="self-start min-h-11 px-6 rounded-full font-semibold text-white"
               style={{ backgroundColor: brand.palette.accent }}
             >
               Book now
-            </button>
+            </MotionButton>
           </div>
         </div>
       </section>

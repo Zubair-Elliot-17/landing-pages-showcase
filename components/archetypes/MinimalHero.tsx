@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
+import { MotionButton } from "@/components/MotionButton";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
@@ -28,16 +29,21 @@ export function MinimalHero({ brand }: { brand: BrandPage }) {
           </Link>
           <h1 className="text-6xl sm:text-7xl font-bold tracking-tight mb-6">{brand.name}</h1>
           <p className="text-xl sm:text-2xl opacity-80 max-w-md mb-10">{brand.tagline}</p>
-          <button
-            className="self-start min-h-11 px-8 py-3 rounded-full font-semibold text-white transition-transform hover:scale-105"
+          <MotionButton
+            className="self-start min-h-11 px-8 py-3 rounded-full font-semibold text-white"
             style={{ backgroundColor: brand.palette.accent }}
           >
             Learn more
-          </button>
+          </MotionButton>
         </div>
 
-        <div className="relative w-full h-[50vh] lg:h-auto lg:w-1/2 lg:min-h-screen">
-          <HeroImage src={brand.heroImage} alt={brand.heroImageAlt} className="object-cover" priority />
+        <div className="relative w-full h-[50vh] lg:h-auto lg:w-1/2 lg:min-h-screen overflow-hidden group">
+          <HeroImage
+            src={brand.heroImage}
+            alt={brand.heroImageAlt}
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            priority
+          />
         </div>
       </div>
 

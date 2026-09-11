@@ -3,6 +3,7 @@ import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
+import { MotionButton } from "@/components/MotionButton";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
@@ -38,12 +39,12 @@ export function BoldMotion({ brand }: { brand: BrandPage }) {
               {brand.name}
             </h1>
             <p className="text-white/90 text-xl sm:text-2xl max-w-lg">{brand.tagline}</p>
-            <button
-              className="self-start min-h-11 px-8 py-3 rounded-full font-semibold uppercase tracking-wide text-black transition-transform hover:scale-105"
+            <MotionButton
+              className="self-start min-h-11 px-8 py-3 rounded-full font-semibold uppercase tracking-wide text-black"
               style={{ backgroundColor: brand.palette.accent }}
             >
               Shop now
-            </button>
+            </MotionButton>
           </section>
         </div>
       </div>

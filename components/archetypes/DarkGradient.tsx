@@ -3,6 +3,7 @@ import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
+import { MotionButton } from "@/components/MotionButton";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
@@ -37,18 +38,23 @@ export function DarkGradient({ brand }: { brand: BrandPage }) {
         </header>
 
         <section className="flex-1 flex flex-col sm:flex-row items-center gap-10 px-8 sm:px-16 py-10">
-          <div className="relative w-64 h-64 sm:w-96 sm:h-96 rounded-3xl overflow-hidden shrink-0 shadow-2xl">
-            <HeroImage src={brand.heroImage} alt={brand.heroImageAlt} className="object-cover" priority />
+          <div className="relative w-64 h-64 sm:w-96 sm:h-96 rounded-3xl overflow-hidden shrink-0 shadow-2xl group transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+            <HeroImage
+              src={brand.heroImage}
+              alt={brand.heroImageAlt}
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              priority
+            />
           </div>
           <div className="max-w-lg">
             <h1 className="text-6xl font-bold mb-4">{brand.name}</h1>
             <p className="text-xl opacity-80 mb-8">{brand.tagline}</p>
-            <button
-              className="min-h-11 px-8 py-3 rounded-full font-semibold text-black transition-transform hover:scale-105"
+            <MotionButton
+              className="min-h-11 px-8 py-3 rounded-full font-semibold text-black"
               style={{ backgroundColor: brand.palette.accent }}
             >
               Start listening
-            </button>
+            </MotionButton>
           </div>
         </section>
       </div>
