@@ -28,6 +28,9 @@ export interface BrandPage {
   heroTier: boolean;
   heroImage: string;
   heroImageAlt: string;
+  /** Only used by the photo-grid archetype's secondary panel. */
+  secondaryImage?: string;
+  secondaryImageAlt?: string;
 }
 
 export const BRANDS: BrandPage[] = [
@@ -40,8 +43,8 @@ export const BRANDS: BrandPage[] = [
     fontKey: "manrope",
     layoutArchetype: "minimal-hero",
     heroTier: false,
-    heroImage: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=1600&q=80",
-    heroImageAlt: "Abstract soft gradient light on a dark surface",
+    heroImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1600&q=80",
+    heroImageAlt: "A laptop screen glowing with warm sunset colors in a dark room",
   },
   {
     slug: "surge",
@@ -66,6 +69,8 @@ export const BRANDS: BrandPage[] = [
     heroTier: false,
     heroImage: "https://images.unsplash.com/photo-1501183638710-841dd1904471?w=1600&q=80",
     heroImageAlt: "Warm, sunlit living room interior",
+    secondaryImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+    secondaryImageAlt: "A styled living room corner with a yellow accent chair",
   },
   {
     slug: "nocturn",
@@ -88,8 +93,8 @@ export const BRANDS: BrandPage[] = [
     fontKey: "inter",
     layoutArchetype: "minimal-hero",
     heroTier: false,
-    heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&q=80",
-    heroImageAlt: "Minimalist product on a clean studio background",
+    heroImage: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1600&q=80",
+    heroImageAlt: "A smart lock on a front door being controlled from a phone app",
   },
   {
     slug: "fjord",
@@ -102,6 +107,8 @@ export const BRANDS: BrandPage[] = [
     heroTier: false,
     heroImage: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80",
     heroImageAlt: "Forest path winding through tall trees",
+    secondaryImage: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80",
+    secondaryImageAlt: "Desert loungers facing a mountain view at sunset",
   },
   {
     slug: "kinetic",
@@ -136,8 +143,8 @@ export const BRANDS: BrandPage[] = [
     fontKey: "workSans",
     layoutArchetype: "minimal-hero",
     heroTier: false,
-    heroImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80",
-    heroImageAlt: "Clean desk setup with laptop and soft natural light",
+    heroImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=80",
+    heroImageAlt: "A clean analytics dashboard showing clicks, impressions, and trend lines",
   },
   {
     slug: "ember",
@@ -148,8 +155,8 @@ export const BRANDS: BrandPage[] = [
     fontKey: "bebasNeue",
     layoutArchetype: "bold-motion",
     heroTier: false,
-    heroImage: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1600&q=80",
-    heroImageAlt: "Close-up of a sneaker against dark concrete",
+    heroImage: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1600&q=80",
+    heroImageAlt: "A sprinter crouched at the starting blocks on a track",
   },
 ];
 

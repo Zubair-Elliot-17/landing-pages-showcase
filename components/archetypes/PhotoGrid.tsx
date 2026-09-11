@@ -4,11 +4,14 @@ import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 
 /**
- * Airbnb-style: warm, photography-led, generous rounded corners, a grid
- * of imagery doing most of the emotional work.
+ * Airbnb-style: warm, photography-led, generous rounded corners. Both the
+ * main hero shot and the secondary panel carry real imagery — no flat
+ * color blocks standing in for content.
  */
 export function PhotoGrid({ brand }: { brand: BrandPage }) {
   const font = fontMap[brand.fontKey];
+  const secondaryImage = brand.secondaryImage ?? brand.heroImage;
+  const secondaryImageAlt = brand.secondaryImageAlt ?? brand.heroImageAlt;
 
   return (
     <main
@@ -32,17 +35,25 @@ export function PhotoGrid({ brand }: { brand: BrandPage }) {
           <div className="relative rounded-2xl overflow-hidden h-72 sm:col-span-2 sm:row-span-2 sm:h-[36rem]">
             <HeroImage src={brand.heroImage} alt={brand.heroImageAlt} className="object-cover" priority />
           </div>
-          <div
-            className="rounded-2xl h-36 sm:h-[17rem] flex items-end p-5"
-            style={{ backgroundColor: brand.palette.accent, color: "#fff" }}
-          >
-            <span className="font-semibold">Explore stays</span>
+
+          <div className="relative rounded-2xl overflow-hidden h-56 sm:h-[17rem]">
+            <HeroImage src={secondaryImage} alt={secondaryImageAlt} className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <span className="absolute bottom-5 left-5 text-white font-semibold">Explore stays</span>
           </div>
+
           <div
-            className="rounded-2xl h-36 sm:h-[17rem] flex items-end p-5 border"
-            style={{ borderColor: brand.palette.fg + "22" }}
+            className="rounded-2xl h-40 sm:h-[17rem] flex flex-col justify-between p-5 border"
+            style={{
+              borderColor: brand.palette.fg + "22",
+              background: `linear-gradient(160deg, ${brand.palette.accent}18, transparent 70%)`,
+            }}
           >
-            <button className="min-h-11 px-6 rounded-full font-semibold text-white" style={{ backgroundColor: brand.palette.accent }}>
+            <p className="text-sm opacity-70 max-w-[16rem]">Real places, hosted by real people.</p>
+            <button
+              className="self-start min-h-11 px-6 rounded-full font-semibold text-white"
+              style={{ backgroundColor: brand.palette.accent }}
+            >
               Book now
             </button>
           </div>
