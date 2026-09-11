@@ -31,6 +31,7 @@ export interface Testimonial {
   quote: string;
   name: string;
   role: string;
+  rating: 1 | 2 | 3 | 4 | 5;
 }
 
 export interface BrandPage {
@@ -50,7 +51,7 @@ export interface BrandPage {
   secondaryImageAlt?: string;
   features: [Feature, Feature, Feature];
   stats: [Stat, Stat, Stat];
-  testimonial: Testimonial;
+  testimonials: [Testimonial, Testimonial, Testimonial];
   ctaHeadline: string;
 }
 
@@ -77,11 +78,11 @@ export const BRANDS: BrandPage[] = [
       { value: "2.3M", label: "people who've switched" },
       { value: "4.9/5", label: "average rating" },
     ],
-    testimonial: {
-      quote: "I didn't think a laptop could change how I work. Orenda did.",
-      name: "Maya Chen",
-      role: "Product Designer",
-    },
+    testimonials: [
+      { quote: "I didn't think a laptop could change how I work. Orenda did.", name: "Maya Chen", role: "Product Designer", rating: 5 },
+      { quote: "Switched from three other laptops before this one stuck.", name: "Derek Holt", role: "Freelance Developer", rating: 5 },
+      { quote: "The battery life alone would've sold me. Everything else is a bonus.", name: "Aisha Rahman", role: "Grad Student", rating: 4 },
+    ],
     ctaHeadline: "Reconsider what personal means.",
   },
   {
@@ -106,11 +107,11 @@ export const BRANDS: BrandPage[] = [
       { value: "0.3s", label: "faster average split" },
       { value: "180g", label: "featherweight build" },
     ],
-    testimonial: {
-      quote: "Every PR I've hit this year, I hit in Surge.",
-      name: "Jonas Reyes",
-      role: "Marathoner",
-    },
+    testimonials: [
+      { quote: "Every PR I've hit this year, I hit in Surge.", name: "Jonas Reyes", role: "Marathoner", rating: 5 },
+      { quote: "First shoe that didn't need a break-in period. Raced in them week one.", name: "Priya Desai", role: "Track Coach", rating: 5 },
+      { quote: "My splits got faster the week I switched. Coincidence? I don't think so.", name: "Marcus Lin", role: "Amateur Triathlete", rating: 4 },
+    ],
     ctaHeadline: "Move like it's the last mile.",
   },
   {
@@ -137,11 +138,11 @@ export const BRANDS: BrandPage[] = [
       { value: "4.8★", label: "average host rating" },
       { value: "98%", label: "guests who'd book again" },
     ],
-    testimonial: {
-      quote: "It felt less like a rental and more like someone handed me their keys and said 'make yourself at home.'",
-      name: "Priya Nair",
-      role: "Frequent traveler",
-    },
+    testimonials: [
+      { quote: "It felt less like a rental and more like someone handed me their keys and said 'make yourself at home.'", name: "Priya Nair", role: "Frequent traveler", rating: 5 },
+      { quote: "Booked last minute during a storm and the host had coffee waiting.", name: "Tom Bennett", role: "Business traveler", rating: 5 },
+      { quote: "Cancelled once for a family emergency, no hassle, no fees.", name: "Grace Kim", role: "Parent of three", rating: 4 },
+    ],
     ctaHeadline: "Find a place that feels like home.",
   },
   {
@@ -166,11 +167,11 @@ export const BRANDS: BrandPage[] = [
       { value: "150+", label: "curated moods" },
       { value: "0", label: "ads on premium" },
     ],
-    testimonial: {
-      quote: "Nocturn is the only app that gets it right at 2am.",
-      name: "DJ Kessler",
-      role: "Resident DJ",
-    },
+    testimonials: [
+      { quote: "Nocturn is the only app that gets it right at 2am.", name: "DJ Kessler", role: "Resident DJ", rating: 5 },
+      { quote: "Found three new favorite artists in a single commute.", name: "Leah Obi", role: "Daily commuter", rating: 5 },
+      { quote: "The mood-based playlists are scary accurate.", name: "Ryan Cole", role: "Music blogger", rating: 4 },
+    ],
     ctaHeadline: "Every mood has a soundtrack.",
   },
   {
@@ -195,11 +196,11 @@ export const BRANDS: BrandPage[] = [
       { value: "30%", label: "average energy savings" },
       { value: "500K+", label: "homes automated" },
     ],
-    testimonial: {
-      quote: "I stopped thinking about my thermostat. That's the whole point.",
-      name: "Owen Park",
-      role: "Homeowner",
-    },
+    testimonials: [
+      { quote: "I stopped thinking about my thermostat. That's the whole point.", name: "Owen Park", role: "Homeowner", rating: 5 },
+      { quote: "Setup took less time than unboxing the last thermostat I bought.", name: "Nina Torres", role: "First-time buyer", rating: 5 },
+      { quote: "Cut our energy bill by a third in the first month.", name: "Sam Whitfield", role: "Homeowner", rating: 4 },
+    ],
     ctaHeadline: "Your home, quietly smarter.",
   },
   {
@@ -226,11 +227,11 @@ export const BRANDS: BrandPage[] = [
       { value: "9,000+", label: "remote stays" },
       { value: "4.9★", label: "average trip rating" },
     ],
-    testimonial: {
-      quote: "Fjord found us a cabin no map could.",
-      name: "Elin Voss",
-      role: "Traveler",
-    },
+    testimonials: [
+      { quote: "Fjord found us a cabin no map could.", name: "Elin Voss", role: "Traveler", rating: 5 },
+      { quote: "Our host left a handwritten trail map. Best souvenir of the trip.", name: "Callum Reed", role: "Hiker", rating: 5 },
+      { quote: "Slow travel, done right. No crowds, no hotel chains in sight.", name: "Marisol Vega", role: "Photographer", rating: 4 },
+    ],
     ctaHeadline: "Trips that start where the map runs out.",
   },
   {
@@ -255,11 +256,11 @@ export const BRANDS: BrandPage[] = [
       { value: "89%", label: "still training past 90 days" },
       { value: "12min", label: "average session" },
     ],
-    testimonial: {
-      quote: "Kinetic is the first program I didn't quit by week three.",
-      name: "Tasha Okoro",
-      role: "Member since 2024",
-    },
+    testimonials: [
+      { quote: "Kinetic is the first program I didn't quit by week three.", name: "Tasha Okoro", role: "Member since 2024", rating: 5 },
+      { quote: "It actually listens when I say I'm exhausted. Adjusts the plan same day.", name: "Devon Marsh", role: "New parent", rating: 5 },
+      { quote: "Down two dress sizes and I never once felt like I was grinding.", name: "Wendy Cho", role: "Member since 2025", rating: 4 },
+    ],
     ctaHeadline: "Train like the clock is watching.",
   },
   {
@@ -284,11 +285,11 @@ export const BRANDS: BrandPage[] = [
       { value: "2.1M", label: "monthly listeners" },
       { value: "4.8★", label: "app rating" },
     ],
-    testimonial: {
-      quote: "Velvet is where I found my favorite show, and then three more.",
-      name: "Marcus Webb",
-      role: "Listener",
-    },
+    testimonials: [
+      { quote: "Velvet is where I found my favorite show, and then three more.", name: "Marcus Webb", role: "Listener", rating: 5 },
+      { quote: "The editors clearly listen before they recommend. Never a dud.", name: "Farah Ali", role: "Daily listener", rating: 5 },
+      { quote: "Ad breaks used to make me skip. Now I actually stay for them.", name: "Grant Osei", role: "Subscriber", rating: 4 },
+    ],
     ctaHeadline: "Podcasts worth staying up for.",
   },
   {
@@ -313,11 +314,11 @@ export const BRANDS: BrandPage[] = [
       { value: "50K+", label: "teams onboarded" },
       { value: "99.9%", label: "uptime" },
     ],
-    testimonial: {
-      quote: "Meridian is the first tool my whole team actually opens every day.",
-      name: "Sana Iqbal",
-      role: "Ops Lead",
-    },
+    testimonials: [
+      { quote: "Meridian is the first tool my whole team actually opens every day.", name: "Sana Iqbal", role: "Ops Lead", rating: 5 },
+      { quote: "We killed four other tools the week we switched.", name: "Ravi Chandran", role: "Founder", rating: 5 },
+      { quote: "Onboarded twelve new hires without a single 'how do I' Slack message.", name: "Julia Novak", role: "Team Lead", rating: 4 },
+    ],
     ctaHeadline: "Work, laid out the way you think.",
   },
   {
@@ -342,11 +343,11 @@ export const BRANDS: BrandPage[] = [
       { value: "26.2", label: "the distance they're made for" },
       { value: "10K+", label: "five-star reviews" },
     ],
-    testimonial: {
-      quote: "I've run three marathons in the same pair of Embers.",
-      name: "Delia Cruz",
-      role: "Runner",
-    },
+    testimonials: [
+      { quote: "I've run three marathons in the same pair of Embers.", name: "Delia Cruz", role: "Runner", rating: 5 },
+      { quote: "500 miles in and the sole still looks new.", name: "Patrick Osei", role: "Runner", rating: 5 },
+      { quote: "Only shoe that doesn't wreck my knees on pavement.", name: "Holly Fenn", role: "Weekend runner", rating: 4 },
+    ],
     ctaHeadline: "Built for the miles no one sees.",
   },
 ];
