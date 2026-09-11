@@ -39,6 +39,7 @@ export interface BrandPage {
   name: string;
   tagline: string;
   palette: Palette;
+  darkPalette: Palette;
   fontKey: FontKey;
   layoutArchetype: LayoutArchetype;
   heroTier: boolean;
@@ -60,6 +61,7 @@ export const BRANDS: BrandPage[] = [
     name: "Orenda",
     tagline: "The most personal device, reconsidered.",
     palette: { bg: "#FAFAFA", fg: "#1D1D1F", accent: "#0071E3" },
+    darkPalette: { bg: "#1C1C1E", fg: "#F5F5F7", accent: "#409CFF" },
     fontKey: "manrope",
     layoutArchetype: "minimal-hero",
     heroTier: false,
@@ -88,6 +90,7 @@ export const BRANDS: BrandPage[] = [
     name: "Surge",
     tagline: "Move like it's the last mile.",
     palette: { bg: "#0D0D0D", fg: "#FFFFFF", accent: "#FF4500" },
+    darkPalette: { bg: "#000000", fg: "#FFFFFF", accent: "#FF6A33" },
     fontKey: "archivoBlack",
     layoutArchetype: "bold-motion",
     heroTier: true,
@@ -115,7 +118,8 @@ export const BRANDS: BrandPage[] = [
     brandInspiration: "Airbnb-style",
     name: "Havenly",
     tagline: "Stay somewhere that feels like someone's home.",
-    palette: { bg: "#FFF8F0", fg: "#2B2118", accent: "#FF5A5F" },
+    palette: { bg: "#FFF8F0", fg: "#2B2118", accent: "#E5383D" },
+    darkPalette: { bg: "#241C16", fg: "#FFF3E8", accent: "#FF7A7E" },
     fontKey: "poppins",
     layoutArchetype: "photo-grid",
     heroTier: false,
@@ -146,6 +150,7 @@ export const BRANDS: BrandPage[] = [
     name: "Nocturn",
     tagline: "Every mood has a soundtrack.",
     palette: { bg: "#121212", fg: "#FFFFFF", accent: "#1DB954" },
+    darkPalette: { bg: "#000000", fg: "#FFFFFF", accent: "#2ED968" },
     fontKey: "spaceGrotesk",
     layoutArchetype: "dark-gradient",
     heroTier: true,
@@ -173,7 +178,8 @@ export const BRANDS: BrandPage[] = [
     brandInspiration: "Apple-style",
     name: "Lucent",
     tagline: "Your home, quietly smarter.",
-    palette: { bg: "#F5F5F7", fg: "#1D1D1F", accent: "#34C759" },
+    palette: { bg: "#F5F5F7", fg: "#1D1D1F", accent: "#1E8E42" },
+    darkPalette: { bg: "#1C1C1E", fg: "#F5F5F7", accent: "#5FDB7E" },
     fontKey: "inter",
     layoutArchetype: "minimal-hero",
     heroTier: false,
@@ -202,6 +208,7 @@ export const BRANDS: BrandPage[] = [
     name: "Fjord",
     tagline: "Trips that start where the map runs out.",
     palette: { bg: "#F4F1EA", fg: "#2E2A24", accent: "#4A6B5A" },
+    darkPalette: { bg: "#22201B", fg: "#F4F1EA", accent: "#7FA08D" },
     fontKey: "nunitoSans",
     layoutArchetype: "photo-grid",
     heroTier: false,
@@ -232,6 +239,7 @@ export const BRANDS: BrandPage[] = [
     name: "Kinetic",
     tagline: "Train like the clock is watching.",
     palette: { bg: "#0A0A0A", fg: "#FFFFFF", accent: "#D4FF00" },
+    darkPalette: { bg: "#000000", fg: "#FFFFFF", accent: "#E2FF4D" },
     fontKey: "oswald",
     layoutArchetype: "bold-motion",
     heroTier: false,
@@ -260,6 +268,7 @@ export const BRANDS: BrandPage[] = [
     name: "Velvet",
     tagline: "Podcasts worth staying up for.",
     palette: { bg: "#16121A", fg: "#F2ECF5", accent: "#B084F5" },
+    darkPalette: { bg: "#0A0810", fg: "#F2ECF5", accent: "#C4A3F7" },
     fontKey: "playfairDisplay",
     layoutArchetype: "dark-gradient",
     heroTier: false,
@@ -288,6 +297,7 @@ export const BRANDS: BrandPage[] = [
     name: "Meridian",
     tagline: "Work, laid out the way you think.",
     palette: { bg: "#F7F3EE", fg: "#2A2622", accent: "#C1622E" },
+    darkPalette: { bg: "#211C18", fg: "#F7F3EE", accent: "#E08552" },
     fontKey: "workSans",
     layoutArchetype: "minimal-hero",
     heroTier: false,
@@ -316,6 +326,7 @@ export const BRANDS: BrandPage[] = [
     name: "Ember",
     tagline: "Built for the miles no one sees.",
     palette: { bg: "#1A0E0A", fg: "#FFF3E8", accent: "#FF6B35" },
+    darkPalette: { bg: "#0D0704", fg: "#FFF3E8", accent: "#FF8C5C" },
     fontKey: "bebasNeue",
     layoutArchetype: "bold-motion",
     heroTier: false,

@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 import { MotionButton } from "@/components/MotionButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
 import { CTABand } from "@/components/sections/CTABand";
+import { useResolvedPalette } from "@/lib/theme";
 
 /**
  * Airbnb-style: warm, photography-led, generous rounded corners. Both the
@@ -15,19 +19,23 @@ import { CTABand } from "@/components/sections/CTABand";
  */
 export function PhotoGrid({ brand }: { brand: BrandPage }) {
   const font = fontMap[brand.fontKey];
+  const palette = useResolvedPalette(brand);
   const secondaryImage = brand.secondaryImage ?? brand.heroImage;
   const secondaryImageAlt = brand.secondaryImageAlt ?? brand.heroImageAlt;
 
   return (
     <main
-      className={`${font.className} min-h-screen`}
-      style={{ backgroundColor: brand.palette.bg, color: brand.palette.fg }}
+      className={`${font.className} min-h-screen transition-colors duration-500`}
+      style={{ backgroundColor: palette.bg, color: palette.fg }}
     >
       <header className="p-8 flex items-center justify-between">
         <Link href="/" className="text-sm opacity-70 hover:opacity-100 transition-opacity min-h-11 inline-flex items-center">
           ← All brands
         </Link>
-        <span className="text-sm font-semibold min-h-11 inline-flex items-center">{brand.name}</span>
+        <div className="flex items-center gap-4">
+          <span className="text-sm font-semibold min-h-11 inline-flex items-center">{brand.name}</span>
+          <ThemeToggle />
+        </div>
       </header>
 
       <section className="px-6 sm:px-10 pb-6">
@@ -59,14 +67,14 @@ export function PhotoGrid({ brand }: { brand: BrandPage }) {
           <div
             className="rounded-2xl h-40 sm:h-[17rem] flex flex-col justify-between p-5 border transition-transform duration-300 hover:-translate-y-1"
             style={{
-              borderColor: brand.palette.fg + "22",
-              background: `linear-gradient(160deg, ${brand.palette.accent}18, transparent 70%)`,
+              borderColor: palette.fg + "22",
+              background: `linear-gradient(160deg, ${palette.accent}18, transparent 70%)`,
             }}
           >
             <p className="text-sm opacity-70 max-w-[16rem]">Real places, hosted by real people.</p>
             <MotionButton
               className="self-start min-h-11 px-6 rounded-full font-semibold text-white"
-              style={{ backgroundColor: brand.palette.accent }}
+              style={{ backgroundColor: palette.accent }}
             >
               Book now
             </MotionButton>

@@ -1,13 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { MotionButton } from "@/components/MotionButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
 import { CTABand } from "@/components/sections/CTABand";
+import { useResolvedPalette } from "@/lib/theme";
 
 /**
  * Nike-style: full-bleed imagery, oversized condensed type, high energy.
@@ -16,22 +20,27 @@ import { CTABand } from "@/components/sections/CTABand";
  */
 export function BoldMotion({ brand }: { brand: BrandPage }) {
   const font = fontMap[brand.fontKey];
+  const palette = useResolvedPalette(brand);
 
   return (
-    <main className={font.className} style={{ backgroundColor: brand.palette.bg, color: brand.palette.fg }}>
+    <main
+      className={`${font.className} transition-colors duration-500`}
+      style={{ backgroundColor: palette.bg, color: palette.fg }}
+    >
       <div className="relative min-h-screen">
         <div className="absolute inset-0">
           <HeroImage src={brand.heroImage} alt={brand.heroImageAlt} className="object-cover opacity-50" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
         </div>
 
-        {brand.heroTier && <HeroSpotlight accent={brand.palette.accent} />}
+        {brand.heroTier && <HeroSpotlight accent={palette.accent} />}
 
         <div className="relative z-10 flex flex-col min-h-screen">
-          <header className="p-8">
+          <header className="p-8 flex items-center justify-between">
             <Link href="/" className="text-sm text-white/70 hover:text-white transition-colors min-h-11 inline-flex items-center">
               ← All brands
             </Link>
+            <ThemeToggle />
           </header>
 
           <section className="flex-1 flex flex-col justify-end px-8 pb-20 gap-6 max-w-4xl">
@@ -41,7 +50,7 @@ export function BoldMotion({ brand }: { brand: BrandPage }) {
             <p className="text-white/90 text-xl sm:text-2xl max-w-lg">{brand.tagline}</p>
             <MotionButton
               className="self-start min-h-11 px-8 py-3 rounded-full font-semibold uppercase tracking-wide text-black"
-              style={{ backgroundColor: brand.palette.accent }}
+              style={{ backgroundColor: palette.accent }}
             >
               Shop now
             </MotionButton>

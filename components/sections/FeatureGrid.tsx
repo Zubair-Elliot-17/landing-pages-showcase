@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import type { BrandPage } from "@/lib/brands";
+import { useResolvedPalette } from "@/lib/theme";
 
 export function FeatureGrid({ brand }: { brand: BrandPage }) {
+  const palette = useResolvedPalette(brand);
   return (
     <section className="px-6 sm:px-10 lg:px-16 py-20 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
@@ -19,7 +21,7 @@ export function FeatureGrid({ brand }: { brand: BrandPage }) {
           >
             <motion.div
               className="w-10 h-10 rounded-full mb-5"
-              style={{ backgroundColor: brand.palette.accent }}
+              style={{ backgroundColor: palette.accent }}
               whileHover={{ scale: 1.25 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               aria-hidden="true"

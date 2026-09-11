@@ -1,13 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { MotionButton } from "@/components/MotionButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { StatsRow } from "@/components/sections/StatsRow";
 import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
 import { CTABand } from "@/components/sections/CTABand";
+import { useResolvedPalette } from "@/lib/theme";
 
 /**
  * Spotify-style: dark, gradient-heavy, editorial serif or mono contrast,
@@ -15,26 +19,28 @@ import { CTABand } from "@/components/sections/CTABand";
  */
 export function DarkGradient({ brand }: { brand: BrandPage }) {
   const font = fontMap[brand.fontKey];
+  const palette = useResolvedPalette(brand);
 
   return (
     <main
-      className={`${font.className} min-h-screen relative overflow-hidden`}
-      style={{ backgroundColor: brand.palette.bg, color: brand.palette.fg }}
+      className={`${font.className} min-h-screen relative overflow-hidden transition-colors duration-500`}
+      style={{ backgroundColor: palette.bg, color: palette.fg }}
     >
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 transition-[background] duration-500"
         style={{
-          background: `linear-gradient(180deg, ${brand.palette.accent}22 0%, ${brand.palette.bg} 60%)`,
+          background: `linear-gradient(180deg, ${palette.accent}22 0%, ${palette.bg} 60%)`,
         }}
       />
 
-      {brand.heroTier && <HeroSpotlight accent={brand.palette.accent} />}
+      {brand.heroTier && <HeroSpotlight accent={palette.accent} />}
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        <header className="p-8">
+        <header className="p-8 flex items-center justify-between">
           <Link href="/" className="text-sm opacity-70 hover:opacity-100 transition-opacity min-h-11 inline-flex items-center">
             ← All brands
           </Link>
+          <ThemeToggle />
         </header>
 
         <section className="flex-1 flex flex-col sm:flex-row items-center gap-10 px-8 sm:px-16 py-10">
@@ -51,7 +57,7 @@ export function DarkGradient({ brand }: { brand: BrandPage }) {
             <p className="text-xl opacity-80 mb-8">{brand.tagline}</p>
             <MotionButton
               className="min-h-11 px-8 py-3 rounded-full font-semibold text-black"
-              style={{ backgroundColor: brand.palette.accent }}
+              style={{ backgroundColor: palette.accent }}
             >
               Start listening
             </MotionButton>

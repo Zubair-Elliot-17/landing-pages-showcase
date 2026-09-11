@@ -3,14 +3,16 @@
 import { motion } from "framer-motion";
 import type { BrandPage } from "@/lib/brands";
 import { getReadableTextColor } from "@/lib/color";
+import { useResolvedPalette } from "@/lib/theme";
 
 export function CTABand({ brand }: { brand: BrandPage }) {
-  const headlineColor = getReadableTextColor(brand.palette.accent);
+  const palette = useResolvedPalette(brand);
+  const headlineColor = getReadableTextColor(palette.accent);
 
   return (
     <section
       className="px-6 sm:px-10 py-20 text-center"
-      style={{ backgroundColor: brand.palette.accent }}
+      style={{ backgroundColor: palette.accent }}
     >
       <motion.h2
         className="text-3xl sm:text-4xl font-bold mb-8 max-w-2xl mx-auto"
