@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 10 Brands, 10 Aesthetics
 
-## Getting Started
+Ten fictional products, each styled after a different iconic consumer landing
+page (Apple, Nike, Airbnb, Spotify-style) — no real logos, names, or copy. A
+speed test of producing polished, distinct-feeling landing pages fast with AI
+help, planned end-to-end with `/office-hours`, `/plan-ceo-review`, and
+`/plan-eng-review` before a line of code was written.
 
-First, run the development server:
+**Build time:** started 2026-09-11 08:26 SAST (scaffold) — finished 08:32
+SAST (all 10 pages built, typed, built successfully, and verified locally).
+About 6 minutes of actual build time, on top of a planning pass through
+`/office-hours` → `/plan-ceo-review` → `/plan-eng-review` beforehand.
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) — the gallery links to
+all 10 brand pages. On any brand page, press **← / →** to cycle through all
+ten.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How it's built
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **One dynamic route** (`app/[slug]/page.tsx`) driven entirely by
+  `lib/brands.ts` — each of the 10 entries picks a `layoutArchetype`
+  (`minimal-hero`, `bold-motion`, `photo-grid`, `dark-gradient`) so pages
+  differ structurally, not just in color/font.
+- **4 archetype components** under `components/archetypes/` — adding an
+  11th brand is a config entry, not a new page.
+- Hero imagery is hand-picked Unsplash photography with a blur-up
+  placeholder and a static fallback if a URL ever fails to load.
+- Two "hero-tier" pages (Surge, Nocturn) get an extra animated
+  spotlight/glow treatment (`components/HeroSpotlight.tsx`) — a lightweight
+  Framer Motion effect standing in for a heavier Aceternity/Three.js
+  component, kept isolated to those two pages only.
 
-## Learn More
+## Manual QA
 
-To learn more about Next.js, take a look at the following resources:
+See the test plan checklist produced by `/plan-eng-review` for the full
+pre-ship checklist (gallery navigation, keyboard nav, image fallback, 404
+handling, and the fresh-clone-to-deploy path).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push to a GitHub repo and import it on [Vercel](https://vercel.com/new) —
+zero config needed, `next.config.ts` already allowlists the Unsplash image
+domain.
