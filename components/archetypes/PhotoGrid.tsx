@@ -2,6 +2,10 @@ import Link from "next/link";
 import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
+import { StatsRow } from "@/components/sections/StatsRow";
+import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
+import { CTABand } from "@/components/sections/CTABand";
 
 /**
  * Airbnb-style: warm, photography-led, generous rounded corners. Both the
@@ -59,6 +63,11 @@ export function PhotoGrid({ brand }: { brand: BrandPage }) {
           </div>
         </div>
       </section>
+
+      <FeatureGrid brand={brand} />
+      <StatsRow brand={brand} />
+      <TestimonialBlock brand={brand} />
+      <CTABand brand={brand} />
     </main>
   );
 }

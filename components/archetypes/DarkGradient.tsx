@@ -3,6 +3,10 @@ import type { BrandPage } from "@/lib/brands";
 import { fontMap } from "@/lib/fonts";
 import { HeroImage } from "@/components/HeroImage";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
+import { StatsRow } from "@/components/sections/StatsRow";
+import { TestimonialBlock } from "@/components/sections/TestimonialBlock";
+import { CTABand } from "@/components/sections/CTABand";
 
 /**
  * Spotify-style: dark, gradient-heavy, editorial serif or mono contrast,
@@ -47,6 +51,13 @@ export function DarkGradient({ brand }: { brand: BrandPage }) {
             </button>
           </div>
         </section>
+      </div>
+
+      <div className="relative z-10">
+        <FeatureGrid brand={brand} />
+        <StatsRow brand={brand} />
+        <TestimonialBlock brand={brand} />
+        <CTABand brand={brand} />
       </div>
     </main>
   );
